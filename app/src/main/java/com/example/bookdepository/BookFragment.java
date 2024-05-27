@@ -6,13 +6,20 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import java.text.DateFormat;
+
 public class BookFragment extends Fragment {
     private Book mBook;
     private EditText mTitleField;
+    private Button mDateButton;
+    private CheckBox mReadedCheckBox;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,18 @@ public class BookFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable c){
                 // И здесь тоже
+            }
+        });
+        mDateButton=(Button) v.findViewById(R.id.book_date);
+        mDateButton.setText(mBook.getDate().toString());
+        mDateButton.setEnabled(false);
+        mReadedCheckBox=(CheckBox) v.findViewById(R.id.book_readed);
+        mDateButton.setText(DateFormat.getDateInstance().format(mBook.getDate()));
+        mReadedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Назначение флага прочтения книги
+                mBook.setReaded(isChecked);
             }
         });
         return v;
