@@ -68,7 +68,7 @@ public class BookListFragment extends Fragment {
         public void onClick (View v){
 //            Intent intent = MainActivity.newIntent(getActivity(), mBook.getId());
 //            startActivity(intent);
-            Intent intent = BookActivity.newIntent(getActivity(), mBook.getId());
+            Intent intent = BookPagerActivity.newIntent(getActivity(), mBook.getId());
             startActivity(intent);
 //            Toast.makeText(getActivity(), mBook.getTitle()+" click", Toast.LENGTH_SHORT).show();
         }
