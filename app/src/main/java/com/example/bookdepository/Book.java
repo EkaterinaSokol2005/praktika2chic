@@ -8,31 +8,30 @@ public class Book {
     private String mTitle;
     private Date mDate;
     private boolean mReaded;
-    public Book() {
+    public Book(){
+        mId = UUID.randomUUID();//Генерирование уникального индетификатора
+        mDate =new Date();
 
-        mId = UUID.randomUUID(); //Генерирование уникального идентификатора
-        mDate = new Date ();
-    }
-    public UUID getId() {
-        return mId;
-    }
-    public String getTitle() {
-        return mTitle;
-    }
-    public void setTitle(String title) {
-        mTitle = title;
     }
     public Date getDate(){
         return mDate;
     }
     public void setDate(Date date){
-        mDate=date;
+        mDate = date;
     }
     public boolean isReaded(){
         return mReaded;
     }
     public void setReaded(boolean readed){
-        mReaded=readed;
-
+        mReaded = readed;
+    }
+    public UUID getId(){
+        return mId;
+    }
+    public String getTitle(){
+        return mTitle;
+    }
+    public void setTitle(String title){
+        mTitle = title;
     }
 }
