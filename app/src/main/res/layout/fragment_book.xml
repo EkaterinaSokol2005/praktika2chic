@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:backgroundTint="#96B17B"
+            android:backgroundTint="#96B1"
             android:padding="80dp"
             android:text="Button" />
 
@@ -48,6 +48,13 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:text="@string/book_readed_label" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/book_report"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/book_report_text"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

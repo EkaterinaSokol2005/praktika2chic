@@ -77,7 +77,7 @@ public class BookListFragment extends Fragment {
             Intent intent = BookPagerActivity
                     .newIntent(getActivity(), book.getId());
             startActivity(intent);
-            if (item.getItemId() == R.id.menu_item_show_subtitle) ;
+            if (item.getItemId() == R.id.menu_item_show_subtitle);
             mSubtitleVisible = !mSubtitleVisible;
             getActivity().invalidateOptionsMenu();
             updateSubtitle();
@@ -145,10 +145,10 @@ public class BookListFragment extends Fragment {
     }
 
     private class BookAdapter extends RecyclerView.Adapter<BookHolder> {
-        private List<Book> mBoooks;
+        private List<Book> mBooks;
 
         public BookAdapter(List<Book> books) {
-            mBoooks = books;
+            mBooks = books;
         }
 
         @Override
@@ -160,18 +160,18 @@ public class BookListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(BookHolder holder, int position) {
-            Book book = mBoooks.get(position);
+            Book book = mBooks.get(position);
 
             holder.bindBook(book);
         }
 
         @Override
         public int getItemCount() {
-            return mBoooks.size();
+            return mBooks.size();
         }
 
         public void setBooks(List<Book> books) {
-            mBoooks = books;
+            mBooks = books;
         }
     }
 }

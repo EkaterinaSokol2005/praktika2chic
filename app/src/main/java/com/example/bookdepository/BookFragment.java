@@ -17,6 +17,7 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ public class BookFragment extends Fragment {
     public static Book mBook;
     public static Button mDateButton;
     public CheckBox mReadedCheckBox;
+    private Button mReportButton;
 
 
     private static final String ARG_BOOK_ID = "book_id";
@@ -101,6 +103,20 @@ public class BookFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mBook.setReaded(isChecked);
+
+            }
+
+        });
+        mReportButton=(Button)v.findViewById(R.id.book_report);
+        mReportButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plan");
+                i.putExtra(Intent.EXTRA_TEXT, getBookReport());
+                i.putExtra(Intent.EXTRA_SUBJECT,
+                        getString(R.string.book_report_subject));
+                i = Intent.createChooser(i, getString(R.string.send_report));
+                startActivity(i);
             }
         });
         return v;
@@ -119,5 +135,19 @@ public class BookFragment extends Fragment {
 
     private static void updateDate() {
         mDateButton.setText(mBook.getDate().toString());
+    }
+    private String getBookReport(){
+        String readedString = null;
+        if (mBook.isReaded()){
+            readedString = getString(R.string.book_report_readed);
+        }else{
+            readedString = getString(R.string.book_report_unreaded);
+        }
+        String dateForat = "EEE, MMM, dd";
+        String dateString= DateFormat
+                .getDateInstance(DateFormat.MEDIUM).format(mBook.getDate());
+        String report = getString(R.string.book_report,
+                mBook.getTitle(), dateString, readedString);
+        return report;
     }
 }
